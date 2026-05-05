@@ -1,0 +1,31 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-default-deny-cnp
+spec:
+  rules:
+    - name: create-default-deny
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kube-system
+                - kyverno
+                - cilium
+                - argocd
+      generate:
+        apiVersion: cilium.io/v2
+        kind: CiliumNetworkPolicy
+        name: default-deny
+        namespace: "{{ request.object.metadata.name }}"
+        synchronize: true
+        data:
+          spec:
+            endpointSelector: {}
+            ingress: []
+            egress: []

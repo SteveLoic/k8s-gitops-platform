@@ -1,0 +1,31 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: mutate-namespace-pss
+spec:
+  rules:
+    - name: add-pss-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+
+      exclude:
+        any:
+          - resources:
+              names:
+                - kube-system
+                - kube-public
+                - kube-node-lease
+                - kyverno
+                - argocd
+                - cilium
+
+      mutate:
+        patchStrategicMerge:
+          metadata:
+            labels:
+              pod-security.kubernetes.io/enforce: restricted
+              pod-security.kubernetes.io/audit: restricted
+              pod-security.kubernetes.io/warn: restricted
