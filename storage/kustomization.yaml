@@ -4,9 +4,9 @@ kind: Kustomization
 resources:
   - dev-pv-def.yaml
   - dev-pvc-def.yaml
-  - prod-pv-def.yaml
-  - prod-pvc-def.yaml
   - storageclass-dev.yaml
-  - storageclass-prod.yaml
+  # - prod-pv-def.yaml
+  # - prod-pvc-def.yaml
+  # - storageclass-prod.yaml
 
   
