@@ -7,6 +7,6 @@ resources:
   - mutate-pod-to-restricted-def.yaml
   - validate-pod-security-def.yaml
   - validate-resources-def.yml
-  - create-default-deny-def.yml
-  - generate-dns-policy-def.yml
-  - generate-same-namespace-policy-def.yml
+  # - create-default-deny-def.yml
+  # - generate-dns-policy-def.yml
+  # - generate-same-namespace-policy-def.yml
