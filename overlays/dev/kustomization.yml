@@ -12,7 +12,7 @@ resources:
   - ../../base/postgres
   - ../../base/ingress
   - ../../base/network
-    - ../../base/rbac
+  - ../../base/rbac
   - ../../storage
 
 patches:
