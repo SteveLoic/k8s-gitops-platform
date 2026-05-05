@@ -16,10 +16,12 @@ spec:
       containers:
         - name: postgres
           image: postgres:16
-          envFrom:
-            - configMapRef:
-                name: postgres-cm
+          ports:
+            - containerPort: 5432
           env:
+            - name: POSTGRES_DB
+              value: hotel_booking
+
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
@@ -31,9 +33,11 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: password
+
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+
   volumeClaimTemplates:
     - metadata:
         name: postgres-storage
