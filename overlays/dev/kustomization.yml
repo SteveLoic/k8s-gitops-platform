@@ -9,7 +9,6 @@ resources:
   - ../../base/policies
   - ../../base/postgres
   - ../../base/ingress
-  - ../../base/policies
   - ../../base/network
   - ../../base/secrets
   - ../../storage
