@@ -16,13 +16,21 @@ spec:
       containers:
         - name: postgres
           image: postgres:16
+          envFrom:
+            - configMapRef:
+                name: postgres-cm
           env:
-            - name: POSTGRES_DB
-              value: hotel
             - name: POSTGRES_USER
-              value: admin
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
+
             - name: POSTGRES_PASSWORD
-              value: secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data

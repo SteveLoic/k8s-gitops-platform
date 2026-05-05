@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - hotel-booking-api-def.yml
+  - hotel-booking-api-svc-def.yml
+  - hotel-booking-api-cm-def.yml

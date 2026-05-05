@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hotel-booking-api
+  name: hotel-booking-api-svc
+spec:
+  ports:
+  - port: 5051
+    protocol: TCP
+    targetPort: 5051
+  selector:
+    app: hotel-booking-api
+  type: ClusterIP
+status:
+  loadBalancer: {}

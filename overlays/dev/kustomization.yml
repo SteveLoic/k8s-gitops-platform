@@ -7,6 +7,14 @@ namespace: dev
 resources:
   - ../../base/frontend
   - ../../base/policies
+  - ../../base/postgres
+  - ../../base/ingress
+  - ../../base/policies
+  - ../../base/network
+  - ../../base/secrets
+  - ../../storage
 
 patches:
   - path: patches/frontend.yaml
+  - path: patches/backend.yaml
+  - path: patches/postgres.yaml

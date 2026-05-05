@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hotel-booking-api-cm-def
+
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hotel_booking
+  SPRING_DATASOURCE_TEST_ON_BORROW: "true"
+  SPRING_DATASOURCE_VALIDATION_QUERY: "SELECT 1"
+

@@ -1,0 +1,15 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: ingress-to-frontend
+spec:
+  endpointSelector:
+    matchLabels:
+      app: hotel-booking-ui
+  ingress:
+    - fromEntities:
+        - world 
+      toPorts:
+        - ports:
+            - port: "80"
+              protocol: TCP

@@ -1,0 +1,15 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: backend-policy
+spec:
+  endpointSelector:
+    matchLabels:
+      app: hotel-booking-api
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: hotel-booking-ui
+      toPorts:
+        - ports:
+            - port: "5150"

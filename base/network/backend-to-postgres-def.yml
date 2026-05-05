@@ -1,0 +1,16 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: backend-to-postgres
+spec:
+  endpointSelector:
+    matchLabels:
+      app: postgres
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: hotel-booking-api
+      toPorts:
+        - ports:
+            - port: "5432"
+              protocol: TCP

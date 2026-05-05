@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hotel-booking-api
+  name: hotel-booking-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hotel-booking-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hotel-booking-api
+    spec:
+      serviceAccountName: backend-sa
+      containers:
+      - image: tchoumidev/hotel-booking-api:1.0.0
+        imagePullPolicy: Always
+        name: hotel-booking-api
+        ports:
+          - containerPort: 5150
+        envFrom:
+          - configMapRef:
+              name: hotel-booking-api-cm-def 
+        env:
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                 name: postgres-secret
+                 key: username
+
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                 name: postgres-secret
+                 key: password
+
+        resources: {}
+status: {}
