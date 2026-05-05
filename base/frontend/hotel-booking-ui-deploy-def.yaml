@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hotel-booking-ui
+  name: hotel-booking-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hotel-booking-ui
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hotel-booking-ui
+    spec:
+      containers:
+      - image: tchoumidev/hotel-booking-ui:1.0.0
+        name: hotel-booking-ui
+        resources: {}
+status: {}
