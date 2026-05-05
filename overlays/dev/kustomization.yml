@@ -5,12 +5,12 @@ kind: Kustomization
 namespace: dev
 
 resources:
+  - sealedsecret.yaml
   - ../../base/frontend
   - ../../base/policies
   - ../../base/postgres
   - ../../base/ingress
   - ../../base/network
-  - ../../base/secrets
   - ../../storage
 
 patches:
