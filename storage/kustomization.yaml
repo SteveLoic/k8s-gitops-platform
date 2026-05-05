@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - dev-pv-def.yaml
+  - dev-pvc-def.yaml
+  - prod-pv-def.yaml
+  - prod-pvc-def.yaml
+  - storageclass-dev.yaml
+  - storageclass-prod.yaml
+
+  
