@@ -1,0 +1,38 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-same-namespace-policy
+spec:
+  rules:
+    - name: allow-internal-traffic
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kube-system
+                - kyverno
+                - cilium
+                - argocd
+      generate:
+        apiVersion: cilium.io/v2
+        kind: CiliumNetworkPolicy
+        name: allow-same-namespace
+        namespace: "{{ request.object.metadata.name }}"
+        synchronize: true
+
+        data:
+          spec:
+            endpointSelector: {}
+            ingress:
+              - fromEndpoints:
+                  - matchLabels:
+                      k8s:io.kubernetes.pod.namespace: "{{ request.object.metadata.name }}"
+            egress:
+              - toEndpoints:
+                  - matchLabels:
+                      k8s:io.kubernetes.pod.namespace: "{{ request.object.metadata.name }}"
