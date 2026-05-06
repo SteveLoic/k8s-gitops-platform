@@ -17,6 +17,7 @@ spec:
                 - kube-system
                 - argocd
                 - kyverno
+                - ingress-nginx  
 
       mutate:
         foreach:

@@ -13,6 +13,9 @@ spec:
           - resources:
               kinds:
                 - Pod
+              namespaces:
+                - prod
+                - dev
       validate:
         message: "Containers must not run as root"
         pattern:
@@ -26,6 +29,9 @@ spec:
           - resources:
               kinds:
                 - Pod
+              namespaces:
+                - prod
+                - dev
       validate:
         message: "Seccomp profile must be RuntimeDefault"
         pattern:
@@ -40,6 +46,9 @@ spec:
           - resources:
               kinds:
                 - Pod
+              namespaces:
+                - prod
+                - dev
       validate:
         message: "Privileged containers are not allowed"
         pattern:

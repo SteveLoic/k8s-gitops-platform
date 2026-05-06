@@ -21,7 +21,7 @@ spec:
                 - kyverno
                 - argocd
                 - cilium
-
+                - ingress-nginx   
       mutate:
         patchStrategicMerge:
           metadata:
