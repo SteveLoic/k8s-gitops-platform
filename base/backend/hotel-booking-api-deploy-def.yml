@@ -19,7 +19,7 @@ spec:
     spec:
       serviceAccountName: backend-sa
       containers:
-      - image: tchoumidev/hotel-booking-api:1.0.0
+      - image: tchoumidev/hotel-booking-api:1.0.1
         imagePullPolicy: Always
         name: hotel-booking-api
         ports:
