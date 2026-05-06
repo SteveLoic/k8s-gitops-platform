@@ -19,19 +19,16 @@ spec:
                 - kyverno
 
       mutate:
-        patchStrategicMerge:
-          spec:
-            securityContext:
-              runAsNonRoot: true
-              seccompProfile:
-                type: RuntimeDefault
-
-            containers:
-              - name: "*"
-                securityContext:
-                  allowPrivilegeEscalation: false
-                  capabilities:
-                    drop:
-                      - ALL
-                  privileged: false
-                  runAsNonRoot: true
+        foreach:
+          - list: "request.object.spec.containers"
+            patchStrategicMerge:
+              spec:
+                containers:
+                  - name: "{{ element.name }}"
+                    securityContext:
+                      allowPrivilegeEscalation: false
+                      privileged: false
+                      runAsNonRoot: true
+                      capabilities:
+                        drop:
+                          - ALL
