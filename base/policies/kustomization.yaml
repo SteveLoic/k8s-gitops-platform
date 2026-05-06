@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - mutate-add-resource-def.yaml
+  # - mutate-add-resource-def.yaml
   - mutate-namespace-pss-def.yaml
   - mutate-pod-to-restricted-def.yaml
   - validate-pod-security-def.yaml
-  - validate-resources-def.yml
+  # - validate-resources-def.yml
   # - create-default-deny-def.yml
   # - generate-dns-policy-def.yml
   # - generate-same-namespace-policy-def.yml
